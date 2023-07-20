@@ -14,6 +14,12 @@ npm run start:docker
 
 url : http://localhost:3000/api
 
+## test
+
+```
+npm run test
+```
+
 ## 특이사항
 
 1. 로그인 같은 인증 모듈 구현은 없습니다.
