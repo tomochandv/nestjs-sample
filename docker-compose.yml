@@ -1,0 +1,30 @@
+version: '3.1'
+networks:
+  app-net:
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=1111
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=1111
+      - MYSQL_DATABASE=test
+    networks:
+      - app-net
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - ./src:/usr/app/src
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+    depends_on:
+      - mysql
+    networks:
+      - app-net
